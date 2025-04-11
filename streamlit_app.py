@@ -16,7 +16,7 @@ from streamlit_folium import st_folium
 # Inline Data Definitions
 # ------------------------------
 
-@st.cache(show_spinner=False)
+@st.cache_data(show_spinner=False)
 def get_state_data():
     data = {
         "State": ["Massachusetts", "Mississippi", "New Jersey", "California", "Texas",
@@ -34,7 +34,7 @@ def get_state_data():
     }
     return pd.DataFrame(data)
 
-@st.cache(show_spinner=False)
+@st.cache_data(show_spinner=False)
 def get_national_trends():
     data = {
         "Year": [2018, 2019, 2020, 2021, 2022],
@@ -43,7 +43,7 @@ def get_national_trends():
     }
     return pd.DataFrame(data)
 
-@st.cache(show_spinner=False)
+@st.cache_data(show_spinner=False)
 def get_disparities_data():
     data = {
         "Race": ["American Indian/Alaska Native", "African American", "White", "Hispanic", "Asian"],
@@ -51,7 +51,7 @@ def get_disparities_data():
     }
     return pd.DataFrame(data)
 
-@st.cache(show_spinner=False)
+@st.cache_data(show_spinner=False)
 def get_quotes():
     # List of dictionaries containing survivor quotes
     return [
