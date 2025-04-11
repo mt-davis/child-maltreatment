@@ -1,0 +1,378 @@
+/* Main styling for child maltreatment dashboard */
+
+/* Page header */
+.stApp header {
+    background-color: #f0f2f6;
+}
+
+/* Main title styling */
+h1 {
+    color: #2c3e50;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e74c3c;
+    margin-bottom: 30px;
+}
+
+/* Section headers */
+h2 {
+    color: #3498db;
+    margin-top: 35px;
+    margin-bottom: 15px;
+}
+
+/* Sub-section headers */
+h3 {
+    color: #2c3e50;
+    margin-top: 25px;
+}
+
+/* Quote styling */
+blockquote {
+    background-color: #f9f9f9;
+    border-left: 5px solid #3498db;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 0 5px 5px 0;
+}
+
+/* Custom container for story elements */
+.story-container {
+    background-color: #f5f7f9;
+    padding: 20px;
+    border-radius: 10px;
+    border-left: 5px solid #e74c3c;
+    margin: 20px 0;
+}
+
+/* Highlight important statistics */
+.stat-highlight {
+    font-weight: bold;
+    color: #e74c3c;
+}
+
+/* Survivor quote styling */
+.survivor-quote {
+    font-style: italic;
+    background-color: #eaf2f8;
+    padding: 15px;
+    border-radius: 5px;
+    margin: 15px 0;
+}
+
+/* Resource card styling */
+.resource-card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+}
+
+.resource-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Footer styling */
+footer {
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+    color: #7f8c8d;
+    font-size: 0.8em;
+}
+
+/* Tooltip styling */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted #3498db;
+    cursor: help;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: #34495e;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -100px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Quiz styling */
+.quiz-question {
+    background-color: #f5f7f9;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.correct-answer {
+    color: #27ae60;
+    font-weight: bold;
+}
+
+.incorrect-answer {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+/* Dashboard metric cards */
+.metric-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+}
+
+.metric-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.metric-card h3 {
+    margin-top: 0;
+    color: #2c3e50;
+}
+
+.metric-card .metric-value {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #3498db;
+    margin: 10px 0;
+}
+
+.metric-card .metric-description {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+}
+
+/* Tabs styling */
+.stTabs [data-baseweb="tab-list"] {
+    gap: 2px;
+}
+
+.stTabs [data-baseweb="tab"] {
+    height: 50px;
+    white-space: pre-wrap;
+    background-color: #f6f8fa;
+    border-radius: 4px 4px 0 0;
+    gap: 1px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.stTabs [aria-selected="true"] {
+    background-color: #e1eaf5;
+    border-bottom: 2px solid #3498db;
+}
+
+/* Custom expander styling */
+.streamlit-expander {
+    border-radius: 10px;
+    border: 1px solid #e0e0e0;
+}
+
+.streamlit-expander-header {
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+/* Narrative path visualization */
+.narrative-path {
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 0;
+}
+
+.narrative-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 120px;
+}
+
+.narrative-step-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #3498db;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.narrative-step-text {
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.narrative-path-line {
+    flex-grow: 1;
+    height: 2px;
+    background-color: #3498db;
+    margin-top: 30px;
+}
+
+/* Interactive elements */
+.interactive-element {
+    border: 2px dashed #3498db;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+    background-color: #f8f9fa;
+    transition: all 0.3s ease;
+}
+
+.interactive-element:hover {
+    border-style: solid;
+    background-color: #eaf2f8;
+}
+
+/* Key insight box */
+.key-insight {
+    background-color: #e8f8f5;
+    border-left: 5px solid #2ecc71;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 0 5px 5px 0;
+}
+
+/* Data source attribution */
+.data-source {
+    font-size: 0.8rem;
+    color: #95a5a6;
+    font-style: italic;
+    margin-top: 5px;
+}
+
+/* Custom table styling */
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.custom-table th {
+    background-color: #3498db;
+    color: white;
+    padding: 12px;
+    text-align: left;
+}
+
+.custom-table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.custom-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.custom-table tr:hover {
+    background-color: #eaf2f8;
+}
+
+/* Age group comparison bar */
+.age-comparison-bar {
+    height: 30px;
+    background: linear-gradient(to right, #3498db, #e74c3c);
+    border-radius: 15px;
+    margin: 5px 0;
+    position: relative;
+}
+
+.age-comparison-label {
+    position: absolute;
+    left: 10px;
+    top: 5px;
+    color: white;
+    font-weight: bold;
+}
+
+.age-comparison-value {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    color: white;
+    font-weight: bold;
+}
+
+/* Interactive highlight box */
+.interactive-highlight {
+    border: 2px solid #3498db;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 20px 0;
+    background-color: #f8f9fa;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.interactive-highlight:hover {
+    transform: scale(1.02);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Resource type badges */
+.resource-badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 10px;
+    font-size: 0.8em;
+    margin-right: 5px;
+}
+
+.badge-prevention {
+    background-color: #e8f8f5;
+    color: #27ae60;
+}
+
+.badge-policy {
+    background-color: #eaf2f8;
+    color: #3498db;
+}
+
+.badge-support {
+    background-color: #fcf3cf;
+    color: #f39c12;
+}
+
+.badge-research {
+    background-color: #f4ecf7;
+    color: #8e44ad;
+}
+
+/* Call to action button */
+.cta-button {
+    display: inline-block;
+    background-color: #e74c3c;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #c0392b;
+}
