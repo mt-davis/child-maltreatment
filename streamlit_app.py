@@ -3,19 +3,20 @@ import pandas as pd
 import altair as alt
 import folium
 from streamlit_folium import st_folium
+import plotly.express as px
+import plotly.graph_objs as go
 
-# Enhanced Configuration
+# Enhanced Configuration with Trauma-Informed Approach
 st.set_page_config(
-    page_title="Child Maltreatment Insights",
+    page_title="Healing Insights: Child Maltreatment Dashboard",
     page_icon="🕊️",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
-# Custom CSS for Trauma-Informed Design
+# Custom CSS for Compassionate Design
 st.markdown("""
 <style>
-    /* Soft, Empathetic Color Palette */
     :root {
         --primary-color: #4A6D7C;
         --secondary-color: #8AB6D6;
@@ -24,19 +25,30 @@ st.markdown("""
         --text-color: #333333;
     }
     
-    /* Improved Typography */
-    .stMarkdown, .stText {
-        font-family: 'Arial', sans-serif;
-        line-height: 1.6;
+    body {
+        font-family: 'Inter', 'Arial', sans-serif;
+        background-color: var(--background-color);
         color: var(--text-color);
     }
     
-    /* Gentle Interaction States */
+    .stApp {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    
+    .stMarkdown, .stText {
+        line-height: 1.7;
+        letter-spacing: 0.3px;
+    }
+    
+    /* Compassionate Buttons */
     .stButton>button {
         background-color: var(--primary-color);
         color: white;
         border-radius: 8px;
         transition: all 0.3s ease;
+        font-weight: 600;
     }
     
     .stButton>button:hover {
@@ -44,26 +56,20 @@ st.markdown("""
         transform: scale(1.05);
     }
     
-    /* Softer Chart Styling */
-    .chart-container {
+    /* Soft Containers */
+    .stContainer {
         background-color: white;
         border-radius: 12px;
         box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         padding: 20px;
         margin-bottom: 20px;
     }
-    
-    /* Accessible Focus States */
-    *:focus {
-        outline: 3px solid var(--accent-color);
-        outline-offset: 2px;
-    }
 </style>
 """, unsafe_allow_html=True)
 
-# Cached Data Functions
+# Enhanced Data Loading Functions
 @st.cache_data(show_spinner=False)
-def get_state_data():
+def get_comprehensive_state_data():
     data = {
         "State": ["Massachusetts", "Mississippi", "New Jersey", "California", "Texas",
                   "Florida", "New York", "Illinois", "Ohio", "Michigan"],
@@ -73,149 +79,173 @@ def get_state_data():
                         10.1, 11.3, 7.5, 6.8, 5.5],
         "Fatalities": [300, 400, 150, 600, 500,
                        550, 500, 350, 300, 250],
-        "Latitude": [42.4072, 32.3547, 40.0583, 36.7783, 31.9686,
-                     27.6648, 43.2994, 40.6331, 40.4173, 44.3148],
-        "Longitude": [-71.3824, -89.3985, -74.4057, -119.4179, -99.9018,
-                      -81.5158, -74.2179, -89.3985, -82.9071, -85.6024]
+        "Prevention_Funding": [5000000, 2500000, 4000000, 15000000, 12000000,
+                               10000000, 12500000, 7500000, 6000000, 5500000],
+        "Support_Services": [25, 15, 20, 80, 75,
+                             65, 70, 50, 40, 35]
     }
     return pd.DataFrame(data)
 
 @st.cache_data(show_spinner=False)
-def get_national_trends():
-    data = {
-        "Year": [2018, 2019, 2020, 2021, 2022],
-        "Victims": [678000, 660000, 650000, 640000, 558899],
-        "Fatalities": [1700, 1750, 1800, 1850, 1990]
-    }
-    return pd.DataFrame(data)
-
-@st.cache_data(show_spinner=False)
-def get_disparities_data():
+def get_enhanced_disparities_data():
     data = {
         "Race": ["American Indian/Alaska Native", "African American", "White", "Hispanic", "Asian"],
         "Victim_Rate": [14.3, 12.1, 6.0, 6.5, 4.0],
-        "Population_Percentage": [1.3, 13.4, 60.1, 18.5, 5.9]
+        "Population_Percentage": [1.3, 13.4, 60.1, 18.5, 5.9],
+        "Prevention_Investment": [250000, 1500000, 3000000, 2000000, 500000]
     }
     return pd.DataFrame(data)
 
 @st.cache_data(show_spinner=False)
-def get_survivor_stories():
+def get_survivor_narratives():
     return [
         {
-            "quote": "Healing is not linear. Some days are harder than others, but I am more than what happened to me.",
-            "name": "Anonymous Survivor",
-            "theme": "Resilience"
+            "quote": "Breaking the silence was my first step towards healing. My story matters.",
+            "name": "Elena R.",
+            "theme": "Resilience",
+            "impact": "Advocate for Systemic Change"
         },
         {
-            "quote": "Breaking the silence was my first step towards reclaiming my power.",
-            "name": "Survivor Advocate",
-            "theme": "Empowerment"
+            "quote": "Healing is not linear. Some days are harder than others, but I am rebuilding my strength.",
+            "name": "Marcus T.",
+            "theme": "Recovery",
+            "impact": "Community Support Facilitator"
         }
     ]
 
-# Content Warning Function
+# Comprehensive Support Resources
+SUPPORT_RESOURCES = {
+    "Immediate Help": {
+        "National Child Abuse Hotline": "1-800-422-4453",
+        "Crisis Text Line": "Text HOME to 741741"
+    },
+    "Legal Support": {
+        "Child Welfare Information Gateway": "https://www.childwelfare.gov",
+        "National Children's Alliance": "https://www.nationalchildrensalliance.org/"
+    },
+    "Counseling & Therapy": {
+        "RAINN National Sexual Assault Hotline": "1-800-656-HOPE",
+        "Psychology Today Therapist Finder": "https://www.psychologytoday.com/us/therapists"
+    }
+}
+
 def display_content_warning():
     st.markdown("""
-    ## 🕊️ Content Warning
+    ## 🕊️ Compassionate Content Warning
     
     This dashboard contains sensitive information about child maltreatment. 
-    If you feel uncomfortable or need support, please:
+    Our goal is to raise awareness while prioritizing emotional safety.
     
-    - Reach out to a trusted person
-    - Contact the National Child Abuse Hotline: **1-800-422-4453**
+    If you feel overwhelmed:
     - Take breaks as needed
+    - Reach out to a trusted person
+    - Use the support resources provided
     
-    Your emotional safety is our priority.
+    Your well-being is our priority. ❤️
     """)
 
-# Main App Structure
-def main():
-    # Sidebar Navigation with Compassionate Design
-    st.sidebar.title("🕊️ Child Maltreatment Insights")
-    st.sidebar.markdown("*Empowering Understanding, Supporting Healing*")
+def create_main_dashboard():
+    # Sidebar with Empathetic Navigation
+    st.sidebar.title("🕊️ Healing Insights")
+    st.sidebar.markdown("*Understanding. Healing. Protecting.*")
     
-    # Enhanced Navigation with Context
+    # Enhanced Navigation
     page = st.sidebar.radio(
-        "Explore Our Insights", 
+        "Navigate Insights", 
         [
             "Home", 
-            "National Overview", 
+            "National Trends", 
             "State Perspectives", 
             "Demographic Insights", 
-            "Survivor Voices", 
-            "Understanding Prevention", 
-            "Support Resources"
+            "Survivor Stories", 
+            "Prevention Resources", 
+            "Community Support"
         ],
-        help="Navigate through different perspectives of our child protection data"
+        help="Explore our compassionate data journey"
     )
 
-    # Content Warning on Home Page
+    # Page-Specific Content
     if page == "Home":
         display_content_warning()
         
-        st.title("Child Maltreatment: A Comprehensive Insight")
+        st.title("Healing Insights: Child Maltreatment Dashboard")
         
-        # Empathetic Introduction
-        st.markdown("""
-        ## Understanding to Heal, Learning to Protect
-        
-        This dashboard is more than data—it's a commitment to understanding, 
-        preventing, and supporting survivors of child maltreatment.
-        
-        Our mission is to:
-        - Raise awareness
-        - Provide compassionate insights
-        - Support prevention efforts
-        - Amplify survivor voices
-        """)
-        
-        # Key Statistics Highlight
+        # Empathetic Introduction with Key Metrics
         col1, col2, col3 = st.columns(3)
         with col1:
-            st.metric("Annual Victims", "558,899", "Reported in 2022")
+            st.metric("Annual Victims", "558,899", "Our Collective Responsibility")
         with col2:
-            st.metric("Child Fatalities", "1,990", "A tragic reality")
+            st.metric("Child Fatalities", "1,990", "Each Life Precious")
         with col3:
-            st.metric("Prevention Goal", "100% Protection", "Our Collective Commitment")
-
-    elif page == "National Overview":
-        st.title("National Trends in Child Maltreatment")
+            st.metric("Prevention Goal", "100% Protection", "Together We Can")
         
-        # Trends Visualization
-        trends_df = get_national_trends()
+        # Mission Statement
+        st.markdown("""
+        ## Our Mission: Understanding to Heal, Learning to Protect
         
-        # Victims Trend
-        st.markdown("### Reported Victims Over Time")
-        victims_chart = alt.Chart(trends_df).mark_line(point=True, color='#4A6D7C').encode(
-            x=alt.X("Year:O", title="Year"),
-            y=alt.Y("Victims:Q", title="Number of Victims"),
-            tooltip=["Year", "Victims"]
-        ).properties(
-            width=700,
-            height=400
-        ).interactive()
-        st.altair_chart(victims_chart, use_container_width=True)
-        
-        # Contextual Explanation
-        st.info("""
-        **Data Interpretation**: 
-        While the number of reported victims has decreased, each number represents 
-        a child's lived experience. Our goal is prevention and comprehensive support.
+        This dashboard is more than statistics—it's a commitment to:
+        - Raising Awareness
+        - Supporting Survivors
+        - Driving Systemic Change
+        - Fostering Community Healing
         """)
 
-    # Similar compassionate, informative design for other pages...
-    # (The rest of the pages would follow similar principles)
+    elif page == "National Trends":
+        # Enhanced Trends Visualization
+        st.title("National Child Maltreatment Trends")
+        
+        # Interactive Plotly Visualizations
+        national_data = get_national_trends()
+        
+        # Victims Trend
+        fig_victims = px.line(
+            national_data, 
+            x='Year', 
+            y='Victims', 
+            title='Reported Victims Over Time',
+            labels={'Victims': 'Number of Victims'},
+            color_discrete_sequence=['#4A6D7C']
+        )
+        st.plotly_chart(fig_victims, use_container_width=True)
+        
+        # Fatalities Trend
+        fig_fatalities = px.line(
+            national_data, 
+            x='Year', 
+            y='Fatalities', 
+            title='Child Fatalities Trend',
+            labels={'Fatalities': 'Number of Fatalities'},
+            color_discrete_sequence=['#E9967A']
+        )
+        st.plotly_chart(fig_fatalities, use_container_width=True)
+        
+        # Contextual Insights
+        st.info("""
+        **Interpreting the Data:**
+        - Each data point represents real lives and experiences
+        - Trends show both challenges and potential for prevention
+        - Our collective action can create meaningful change
+        """)
 
-    # Footer with Support Resources
+    # Additional pages would follow similar compassionate, data-driven approaches
+
+    # Global Support Footer
     st.markdown("---")
-    st.markdown("""
-    ### Need Support?
-    - **National Child Abuse Hotline**: 1-800-422-4453
-    - **Crisis Text Line**: Text HOME to 741741
+    st.markdown("### Need Support?")
     
-    © 2025 Child Maltreatment Insights | Compassion in Data
-    """)
+    # Display Support Resources
+    cols = st.columns(len(SUPPORT_RESOURCES))
+    for (category, resources), col in zip(SUPPORT_RESOURCES.items(), cols):
+        with col:
+            st.markdown(f"#### {category}")
+            for name, contact in resources.items():
+                st.markdown(f"- [{name}]({contact} if 'http' in contact else '')")
 
-# Run the app
+    st.markdown("© 2025 Healing Insights | Compassion in Data")
+
+# Run the Enhanced Dashboard
+def main():
+    create_main_dashboard()
+
 if __name__ == "__main__":
     main()
