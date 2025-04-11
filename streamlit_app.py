@@ -1,4 +1,9 @@
 import streamlit as st
+import time  # for progress animation
+import pandas as pd
+import altair as alt
+import folium
+from streamlit_folium import st_folium
 
 # This must be the first Streamlit command!
 st.set_page_config(
@@ -6,11 +11,6 @@ st.set_page_config(
     page_icon="📊",
     layout="wide"
 )
-
-import pandas as pd
-import altair as alt
-import folium
-from streamlit_folium import st_folium
 
 # ------------------------------
 # Inline Data Definitions
@@ -66,12 +66,12 @@ def get_quotes():
     ]
 
 # ------------------------------
-# Sidebar Navigation
+# Sidebar Navigation (including new Narrative page)
 # ------------------------------
 st.sidebar.title("Navigation")
 page = st.sidebar.selectbox(
     "Select a section",
-    ["Home", "Trends Dashboard", "State Explorer", "Disparities", "Survivor Voices", "Quiz", "Resource Hub"]
+    ["Home", "Narrative", "Trends Dashboard", "State Explorer", "Disparities", "Survivor Voices", "Quiz", "Resource Hub"]
 )
 
 # ------------------------------
@@ -80,12 +80,53 @@ page = st.sidebar.selectbox(
 if page == "Home":
     st.title("Child Maltreatment Data Dashboard")
     st.markdown("""
-    Welcome to this interactive dashboard that presents insights about child maltreatment in the United States.
+    Welcome to this interactive dashboard that presents insights and a narrative about child maltreatment in the United States.
     
-    The app covers **national trends**, **state-level data**, **disparities by demographics**, **case outcomes**, and **prevention efforts**.  
-    Explore interactive maps, charts, survivor voices, and even test your knowledge with a short quiz.
+    Explore **national trends**, **state-level data**, **disparities by demographics**, **case outcomes**, and **prevention efforts**.
+    
+    More than just numbers, this dashboard tells the story behind the data—why this topic is so important and what it means for our communities.
     """)
-    st.image("https://via.placeholder.com/800x300.png?text=Child+Maltreatment+Awareness", use_column_width=True)
+    st.image(
+        "https://www.kvc.org/wp-content/uploads/2023/04/child-abuse-prevention-month-poster-april-vector.jpg_s1024x1024wisk20cU4Ji6zCkryXI-2I7Ri0dHLJNKY4Ma2nMuaXp0p4XvvU-1024x576.jpg",
+        use_container_width=True
+    )
+
+# ------------------------------
+# Narrative Page
+# ------------------------------
+elif page == "Narrative":
+    st.title("The Story Behind the Numbers")
+    st.markdown("""
+    Child maltreatment affects thousands of lives each year. While reports show some improvement over time, the impact on the most vulnerable—especially infants—remains profound.
+    
+    In this narrative, we walk you through the data to reveal the human side of the numbers, explain the challenges, and highlight why continued effort and prevention are essential.
+    """)
+    
+    # Use a slider to let the user explore different years
+    year = st.slider("Select a Year to Explore", 2018, 2022, 2022)
+    trends_df = get_national_trends()
+    data_year = trends_df[trends_df["Year"] == year].iloc[0]
+    st.markdown(f"**In {year}:** There were **{data_year['Victims']:,}** reported cases of child maltreatment and **{data_year['Fatalities']:,}** child fatalities.")
+    
+    st.markdown("""
+    **What Does This Mean?**
+    
+    - **Reduction and Reality:** Even with a slight decline in overall cases, each number represents a child whose life was affected.
+    - **The Unheard Pain:** Fatalities remain high, reminding us that for the youngest children, every loss is a failure of the support system.
+    - **Hope and Urgency:** Improved prevention efforts are vital—but so is understanding that progress is gradual and hard-won.
+    """)
+    
+    st.markdown("### Visualizing Progress Over Time")
+    st.markdown("Imagine the progress we can achieve when every stakeholder commits to protecting our children.")
+    progress_bar = st.progress(0)
+    for percent in range(0, 101, 10):
+        progress_bar.progress(percent)
+        time.sleep(0.1)  # animation delay to simulate progress
+    
+    st.markdown("""
+    **Our Call to Action:**  
+    While the numbers tell us where we stand, they also remind us of our responsibility to keep working for meaningful change. Every improvement in these statistics represents a step toward a safer future for our children.
+    """)
 
 # ------------------------------
 # National Trends Dashboard
