@@ -1,4 +1,10 @@
 import streamlit as st
+# This must be the first Streamlit command!
+st.set_page_config(
+    page_title="Child Maltreatment Data Dashboard",
+    page_icon="📊",
+    layout="wide"
+)
 import pandas as pd
 import altair as alt
 import folium
