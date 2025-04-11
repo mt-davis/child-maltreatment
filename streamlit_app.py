@@ -1,8 +1,5 @@
 import streamlit as st
 import pandas as pd
-import altair as alt
-import folium
-from streamlit_folium import st_folium
 import plotly.express as px
 import plotly.graph_objs as go
 
@@ -87,6 +84,15 @@ def get_comprehensive_state_data():
     return pd.DataFrame(data)
 
 @st.cache_data(show_spinner=False)
+def get_national_trends():
+    data = {
+        "Year": [2018, 2019, 2020, 2021, 2022],
+        "Victims": [678000, 660000, 650000, 640000, 558899],
+        "Fatalities": [1700, 1750, 1800, 1850, 1990]
+    }
+    return pd.DataFrame(data)
+
+@st.cache_data(show_spinner=False)
 def get_enhanced_disparities_data():
     data = {
         "Race": ["American Indian/Alaska Native", "African American", "White", "Hispanic", "Asian"],
@@ -116,15 +122,15 @@ def get_survivor_narratives():
 # Comprehensive Support Resources
 SUPPORT_RESOURCES = {
     "Immediate Help": {
-        "National Child Abuse Hotline": "1-800-422-4453",
-        "Crisis Text Line": "Text HOME to 741741"
+        "National Child Abuse Hotline": "tel:1-800-422-4453",
+        "Crisis Text Line": "sms:741741"
     },
     "Legal Support": {
         "Child Welfare Information Gateway": "https://www.childwelfare.gov",
         "National Children's Alliance": "https://www.nationalchildrensalliance.org/"
     },
     "Counseling & Therapy": {
-        "RAINN National Sexual Assault Hotline": "1-800-656-HOPE",
+        "RAINN National Sexual Assault Hotline": "tel:1-800-656-HOPE",
         "Psychology Today Therapist Finder": "https://www.psychologytoday.com/us/therapists"
     }
 }
@@ -206,6 +212,10 @@ def create_main_dashboard():
             labels={'Victims': 'Number of Victims'},
             color_discrete_sequence=['#4A6D7C']
         )
+        fig_victims.update_layout(
+            plot_bgcolor='rgba(0,0,0,0)',
+            paper_bgcolor='rgba(0,0,0,0)'
+        )
         st.plotly_chart(fig_victims, use_container_width=True)
         
         # Fatalities Trend
@@ -217,6 +227,10 @@ def create_main_dashboard():
             labels={'Fatalities': 'Number of Fatalities'},
             color_discrete_sequence=['#E9967A']
         )
+        fig_fatalities.update_layout(
+            plot_bgcolor='rgba(0,0,0,0)',
+            paper_bgcolor='rgba(0,0,0,0)'
+        )
         st.plotly_chart(fig_fatalities, use_container_width=True)
         
         # Contextual Insights
@@ -226,8 +240,6 @@ def create_main_dashboard():
         - Trends show both challenges and potential for prevention
         - Our collective action can create meaningful change
         """)
-
-    # Additional pages would follow similar compassionate, data-driven approaches
 
     # Global Support Footer
     st.markdown("---")
@@ -239,7 +251,7 @@ def create_main_dashboard():
         with col:
             st.markdown(f"#### {category}")
             for name, contact in resources.items():
-                st.markdown(f"- [{name}]({contact} if 'http' in contact else '')")
+                st.markdown(f"- [{name}]({contact})")
 
     st.markdown("© 2025 Healing Insights | Compassion in Data")
 
