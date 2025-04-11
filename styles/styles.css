@@ -1,6 +1,10 @@
 /* Main styling for child maltreatment dashboard */
 
 /* Page header */
+.stApp header {
+    background-color: #f0f2f6;
+}
+
 /* Main title styling */
 h1 {
     color: #2c3e50;
