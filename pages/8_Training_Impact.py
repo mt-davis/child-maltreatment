@@ -60,9 +60,7 @@ with col1:
     st.markdown("## Training Deficits Across Professional Groups")
     st.markdown("""
     Research shows that many professionals who regularly interact with children lack adequate training
-    to recognize and respond appropriately to signs of child maltreatment. This visualization shows
-    the estimated percentage of professionals who have received adequate training compared to their
-    ability to accurately detect and report maltreatment.
+    to recognize and respond appropriately to signs of child maltreatment. Studies indicate that teachers and other professionals receive inadequate training, leading to limited knowledge about maltreatment detection and reporting, which contributes to under-reporting. This visualization shows the estimated percentage of professionals who have received adequate training compared to their ability to accurately detect and report maltreatment.
     """)
     
     # Create data visualization for training deficit
@@ -95,8 +93,8 @@ with col1:
     # Gap between identification and reality
     st.markdown("## The Identification Gap")
     st.markdown("""
-    In 2022, there were 4.276 million child maltreatment referral reports involving 7.5 million children. However, research suggests that many cases go unidentified and unreported.
-    The following chart shows the gap between estimated actual cases and identified cases.
+    According to the American Society for the Positive Care of Children (2024), there were 4.276 million child maltreatment referral reports involving 7.5 million children in 2022. However, the World Health Organization indicates that child maltreatment is often hidden, with only a fraction of child victims ever receiving support from health professionals.
+    The following chart shows the gap between estimated actual cases and identified cases based on national reporting data.
     """, unsafe_allow_html=True)
     
     # Create line chart for identification gap
@@ -114,7 +112,7 @@ with col1:
     # Impact of training on outcomes
     st.markdown("## Impact of Training on Child Protection Outcomes")
     st.markdown("""
-    Research indicates that when professionals receive proper training, they are significantly more likely to accurately identify and report child maltreatment. Web-based training programs have shown significant improvements in participants' knowledge of maltreatment signs and reporting procedures.
+    Research indicates that when professionals receive proper training, they are significantly more likely to accurately identify and report child maltreatment. A study by Hobbs et al. (2023) found that web-based training programs significantly improved participants' knowledge of maltreatment signs and reporting procedures, with teachers showing measurable improvements in their ability to correctly identify abuse cases following training interventions.
     """, unsafe_allow_html=True)
     
     # Create bar chart for training outcomes
@@ -132,9 +130,9 @@ with col1:
     # Law enforcement training focus
     st.markdown("## Law Enforcement Training Gaps")
     st.markdown("""
-    Law enforcement professionals rarely receive specialized training on effectively identifying and responding to the emotional needs of children exposed to violence. This gap is significant because officers are uniquely positioned to identify and assist children immediately after exposure to violence.
+    According to research published in the Journal of Police and Criminal Psychology, law enforcement professionals rarely receive training tailored towards effectively identifying and responding to the emotional needs of children exposed to violence. This gap is significant because officers are in a unique position to identify and assist children in the immediate aftermath of exposure to violence.
     
-    Law enforcement officers who work child abuse cases need specialized training. Without it, they must rely on guesswork when investigating potential child maltreatment, which can lead to missed opportunities for early intervention.
+    The Role of Law Enforcement in the Response to Child Abuse and Neglect manual emphasizes that law enforcement officers who work child abuse cases need specialized knowledge and skills. Without proper training, they must rely on guesswork when investigating potential child maltreatment, which can lead to missed opportunities for early intervention.
     """, unsafe_allow_html=True)
     
     # Recommendations section
@@ -145,23 +143,23 @@ with col1:
     with col_rec1:
         display_fact_box(
             "Implement Mandatory Specialized Training", 
-            "Recent legal amendments in New York require mandated reporters to complete updated training that includes protocols for reducing implicit bias, identifying adverse childhood experiences, and recognizing signs of abuse in virtual interactions."
+            "Recent legal amendments in New York require mandated reporters to complete updated training that includes protocols for reducing implicit bias, identifying adverse childhood experiences, and recognizing signs of abuse in virtual interactions. (Source: NY State Office of Child & Family Services, 2024)"
         )
         
         display_fact_box(
             "Use Structured Assessment Tools", 
-            "Evidence suggests that using structured risk assessment tools can significantly improve the accuracy of child maltreatment investigations compared to relying solely on professional intuition, which is vulnerable to cognitive biases."
+            "Research published in the British Journal of Social Work (2022) shows that using structured risk assessment tools like the Child Abuse Risk Evaluation-NL (CARE-NL) can significantly improve the accuracy of child maltreatment investigations compared to relying solely on professional intuition."
         )
     
     with col_rec2:
         display_fact_box(
             "Incorporate Trauma-Informed Approaches", 
-            "A trauma-informed approach requires professionals to recognize and appropriately respond to the symptoms of trauma. The use of validated screening tools like the Pediatric Hurt-Insult-Threaten-Scream-Sex tool can help identify victims of child abuse."
+            "According to the American Academy of Family Physicians (2022), a trauma-informed approach requires professionals to recognize and appropriately respond to the symptoms of trauma. They recommend validated screening tools like the Pediatric Hurt-Insult-Threaten-Scream-Sex tool to help identify victims of child abuse."
         )
         
         display_fact_box(
             "Develop Multi-Sector Collaboration", 
-            "Community coalition approaches that build local skills and resources co-created with stakeholders show promise for preventing child maltreatment through a mix of individual, school, and family-oriented programs."
+            "Research in Child Maltreatment and Long-Term Health Outcomes (PMC8480117, 2021) shows that community coalition approaches that build local skills and resources co-created with stakeholders show promise for preventing child maltreatment through mixed individual, school, and family-oriented programs."
         )
 
 with col2:
@@ -198,7 +196,7 @@ with col2:
     # Types of maltreatment identified
     st.markdown("## Identification by Type")
     st.markdown("""
-    Research shows significant variation in detection rates by maltreatment type. In one study, accurate detection rates were 95% for sexual abuse, 87% for neglect, 86% for emotional abuse, but only 58% for physical abuse.
+    Research from Glouchkow, Weegar, & Romano (2022) shows significant variation in detection rates by maltreatment type. Their study found that accuracy rates for detection were highest for sexual abuse (95%), followed by neglect (87%), emotional abuse (86%), but significantly lower for physical abuse (58%). Many teachers in the study stated that physical abuse cases lacked convincing evidence of maltreatment.
     """, unsafe_allow_html=True)
     
     # Create a dataframe for the pie chart
@@ -293,12 +291,40 @@ with st.expander("Data Sources & Methodology"):
     st.markdown("""
     The data presented in this dashboard is compiled from multiple credible sources:
     
-    - National Child Abuse and Neglect Data System (NCANDS)
-    - Peer-reviewed research on professional training and child maltreatment
-    - Data from the Children's Bureau and Department of Health and Human Services
-    - Studies on the effectiveness of different training approaches for mandated reporters
+    **Primary Data Sources:**
     
-    Some visualizations use simulated data based on trends and patterns from the research literature 
+    - **National Statistics:** National Child Abuse and Neglect Data System (NCANDS), 2022-2023 reports
+      - Source: U.S. Department of Health & Human Services, Administration for Children and Families
+      - URL: [Child Maltreatment Reports](https://www.acf.hhs.gov/cb/data-research/child-maltreatment)
+    
+    - **Research on Teacher Response:** Glouchkow, A., Weegar, K., & Romano, E. (2022). Teachers' Responses to Child Maltreatment.
+      - Source: Journal of Child Adolescent Trauma, 16(1), 95-108
+      - URL: [PMC9908805](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9908805/)
+    
+    - **Law Enforcement Training:** National Center for Missing & Exploited Children (NCMEC) Professional Training Resources
+      - URL: [NCMEC Training](https://www.missingkids.org/education/training)
+    
+    - **Mandated Reporter Training:** Hobbs, C., Chisnall, G., Feder, G., Turner, W., & Chowdhury, N. (2023). Child protection training for professionals
+      - Source: Cochrane Database of Systematic Reviews
+      - URL: [PMC9301923](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9301923/)
+      
+    - **Child Maltreatment Risk Factors:** van der Put, C.E., Boekhout van Solinge, N.F., & Assink, M. (2022). Research-based Risk Factors for Child Maltreatment
+      - Source: British Journal of Social Work, 52(7), 3945–3962
+      - URL: [Oxford Academic](https://academic.oup.com/bjsw/article/52/7/3945/6547718)
+    
+    - **Child Maltreatment Statistics:** American Society for the Positive Care of Children (2024)
+      - URL: [Child Maltreatment Statistics](https://americanspcc.org/child-maltreatment-statistics/)
+    
+    **Additional Sources:**
+    
+    - World Health Organization (2024). Child Maltreatment Fact Sheet
+      - URL: [WHO Fact Sheet](https://www.who.int/news-room/fact-sheets/detail/child-maltreatment)
+      
+    - Child Welfare Information Gateway, U.S. Department of Health & Human Services
+    
+    - Centers for Disease Control and Prevention (CDC) Violence Prevention resources
+    
+    **Important Note:** Some visualizations use simulated data based on trends and patterns from the research literature 
     to illustrate key concepts. In a production environment, this dashboard would incorporate direct 
     data feeds from relevant agencies and research institutions.
     """)
